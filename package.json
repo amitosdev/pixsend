@@ -1,6 +1,6 @@
 {
 	"name": "pixsend",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"private": false,
 	"scripts": {
 		"test": "mocha ./test/app.test.js"
