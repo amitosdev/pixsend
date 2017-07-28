@@ -47,6 +47,16 @@ pixsend.add({ more:'data', andMore:'something' }).send()
 // https://www.google.com/?quesry=string&foo=bar&more=data&andMore=something
 ```
 
+* Pixsend can be installed with NPM:
+
+```bash
+npm install --save pixsend
+```
+
+```js
+const Pixsend = require('pixend')
+```
+
 # Tests
 * To run Pixsend unit test run:
 ```bash
