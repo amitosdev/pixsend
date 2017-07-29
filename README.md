@@ -9,20 +9,19 @@ A dead simple wrapper for sending report pixel in the browser
 npm install --save pixsend
 ```
 
-* Require in the browser
-Use the file in the `/dist` folder
+* Require in the browser (use the file in the `/dist` folder)
 
 ```html
 <script type="text/javascript" src="js/pixsend-min.js"></script>
 ```
 
-* require in your browserify app
-For ES6 version:
+* require in your browserify app (ES6)
 
 ```js
 const Pixsend = require('pixend')
 ```
-For ES5 version:
+
+* require in your browserify app (ES5)
 
 ```js
 const Pixsend = require('pixend/dist/pixsend-min.js')
