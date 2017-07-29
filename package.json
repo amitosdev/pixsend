@@ -24,7 +24,7 @@
 		"vinyl-buffer": "^1.0.0",
 		"vinyl-source-stream": "^1.1.0"
 	},
-	"description": "A dead simple report pixel integration for browsers",
+	"description": "A dead simple wrapper for sending report pixel in the browser",
 	"main": "index.js",
 	"directories": {
 		"test": "test"

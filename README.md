@@ -1,32 +1,54 @@
 # Pixsend
-A dead simple report pixel browser integration
+A dead simple wrapper for sending report pixel in the browser
 
-# Implementation
-1. Require `pixsend-min.js` in your HTML file:.
+## Installation
+
+* Install with NPM
+
+```bash
+npm install --save pixsend
+```
+
+* Require in the browser
+Use the file in the `/dist` folder
 
 ```html
 <script type="text/javascript" src="js/pixsend-min.js"></script>
 ```
 
-2. Create a new Pixsend Instance:
+* require in your browserify app
+For ES6 version:
+
+```js
+const Pixsend = require('pixend')
+```
+For ES5 version:
+
+```js
+const Pixsend = require('pixend/dist/pixsend-min.js')
+```
+
+## Implementation
+
+1. Create a new Pixsend Instance:
 
 ```js
 let pixsend = new Pixsend({ src: 'https://www.google.com' }, { foo: 'bar' })
 ```
 
-3. Add data to the pixel:
+2. Add data to the pixel:
 
 ```js
 pixsend.add({ more:'data', andMore:'something' })
 ```
 
-4. send the pixel:
+3. send the pixel:
 
 ```js
 pixsend.send()
 ```
 
-* You can also chain the methods:
+* You can also chain methods:
 
 ```js
 let pixsend = new Pixsend({ src: 'https://www.google.com' }, { foo: 'bar' })
@@ -47,17 +69,7 @@ pixsend.add({ more:'data', andMore:'something' }).send()
 // https://www.google.com/?quesry=string&foo=bar&more=data&andMore=something
 ```
 
-* Pixsend can be installed with NPM:
-
-```bash
-npm install --save pixsend
-```
-
-```js
-const Pixsend = require('pixend')
-```
-
-# Tests
+## Tests
 * To run Pixsend unit test run:
 ```bash
 npm test
@@ -65,5 +77,5 @@ npm test
 
 * This module tested on IE >= 9, Chrome and Firefox.
 
-# Develop
+## Develop
 To develop this module you can run `gulp`. This will build the app file into `dist/pixsend-min.js` and run an express server that will serve a simple HTML file with the integrated module.
