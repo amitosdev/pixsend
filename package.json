@@ -5,6 +5,12 @@
 	"scripts": {
 		"test": "mocha ./test/app.test.js"
 	},
+	"bugs": "https://github.com/amitosdev/pixsend/issues",
+	"homepage": "https://github.com/amitosdev/pixsend",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/amitosdev/pixsend"
+	},
 	"dependencies": {
 		"object-assign": "^4.1.1",
 		"validator": "^8.0.0"
@@ -34,6 +40,8 @@
 		"report",
 		"log"
 	],
-	"author": "Amit Tal",
-	"license": "ISC"
+	"author": {
+		"name": "Amit Tal"
+	},
+	"license": "MIT"
 }
