@@ -1,8 +1,7 @@
 'use strict'
 
 const isURL = require('validator/lib/isURL')
-const urlParse = require('url').parse
-const urlFormat = require('url').format
+const parse = require('url-parse')
 const objectAssign = require('object-assign')
 
 const urlOptions = {
@@ -13,20 +12,15 @@ const urlOptions = {
 class Pixsend {
 	constructor(opts, data, window) {
 		if (!opts.src || !isURL(opts.src, urlOptions)) throw new Error('please provide a valid src url with http/https protocol')
-		this.parsedSrc = urlParse(opts.src, true)
+		this.parsedSrc = parse(opts.src, true)
 		this._isDebug = opts.debug
 		this._data = data || {}
 		this._window = window || global
 	}
 
 	_buildSrc() {
-		let src = {
-			protocol: this.parsedSrc.protocol,
-			hostname: this.parsedSrc.hostname,
-			pathname: this.parsedSrc.pathname,
-			query: objectAssign(this.parsedSrc.query, this._data)
-		}
-		return urlFormat(src)
+		this.parsedSrc.set('query', objectAssign(this.parsedSrc.query, this._data))
+		return this.parsedSrc.toString()
 	}
 
 	_createPixel(src) {

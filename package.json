@@ -13,6 +13,7 @@
 	},
 	"dependencies": {
 		"object-assign": "^4.1.1",
+		"url-parse": "^1.1.9",
 		"validator": "^8.0.0"
 	},
 	"devDependencies": {

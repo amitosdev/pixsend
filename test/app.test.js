@@ -51,7 +51,7 @@ describe('Pixsend tests', () => {
 		it('send the initial data', () => {
 			let pixel = new Pixsend({ src: 'https://www.google.com' }, { product: 'nice' }, window)
 			pixel.send()
-			expect(window.document.img.src).to.be.equal('https://www.google.com/?product=nice')
+			expect(window.document.img.src).to.be.equal('https://www.google.com?product=nice')
 		})
 		it('add data and send it with the initial data', () => {
 			let pixel = new Pixsend({ src: 'https://www.google.com?foo=bar' }, { product: 'nice' }, window)
@@ -60,12 +60,12 @@ describe('Pixsend tests', () => {
 			pixel.add({ more: 'good' })
 			expect(pixel._data).to.be.eql({ product: 'nice', addon: 'something', more: 'good' })
 			pixel.send()
-			expect(window.document.img.src).to.be.equal('https://www.google.com/?foo=bar&product=nice&addon=something&more=good')
+			expect(window.document.img.src).to.be.equal('https://www.google.com?foo=bar&product=nice&addon=something&more=good')
 		})
 		it('chain methods', () => {
 			let pixel = new Pixsend({ src: 'https://www.google.com' }, { product: 'nice' }, window)
 			pixel.add({ addon: 'something' }).send()
-			expect(window.document.img.src).to.be.equal('https://www.google.com/?product=nice&addon=something')
+			expect(window.document.img.src).to.be.equal('https://www.google.com?product=nice&addon=something')
 		})
 	})
 
