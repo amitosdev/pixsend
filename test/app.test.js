@@ -16,10 +16,14 @@ describe('Pixsend tests', () => {
 		})
 
 		it('create instance fails with invalid url', () => {
-			let errorSrcs = ['123', 123, 'ssss', 'htt://www.google.com', 'ftp://google.com', 'www.google.com']
+			let errorSrcs = ['123', 123, 'ssss', 'htt://www.google.com', 'ftp://google.com', 'www.google.com', {src: 'https://www.google.com'}, ['www']]
 			for (let i = 0; i < errorSrcs.length; i++) {
 				expect(() => new Pixsend({ src: errorSrcs[i] }, {}, window)).to.throw()
 			}
+		})
+
+		it('create instance success with localhost url', () => {
+			expect(() => new Pixsend({ src: 'http://localhost:3001/event' }, {}, window)).not.to.throw()
 		})
 	})
 

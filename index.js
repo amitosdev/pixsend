@@ -4,14 +4,9 @@ const isURL = require('validator/lib/isURL')
 const parse = require('url-parse')
 const objectAssign = require('object-assign')
 
-const urlOptions = {
-	protocols: ['http','https'],
-	require_protocol: true
-}
-
 class Pixsend {
 	constructor(opts, data, window) {
-		if (!opts.src || !isURL(opts.src, urlOptions)) throw new Error('please provide a valid src url with http/https protocol')
+		if (!opts.src || !this._isUrl(opts.src)) throw new Error('please provide a valid src url with http/https protocol')
 		this.parsedSrc = parse(opts.src, true)
 		this._isDebug = opts.debug
 		this._data = data || {}
@@ -42,6 +37,15 @@ class Pixsend {
 		let pixelUrl = this._buildSrc()
 		this._log('sending pixel -> src: ', pixelUrl)
 		this._createPixel(pixelUrl)
+	}
+
+	_isUrl(url) {
+		if (url.indexOf('//localhost') > -1) return true
+		const urlOptions = {
+			protocols: ['http','https'],
+			require_protocol: true
+		}
+		return isURL(url, urlOptions)
 	}
 
 	_log() {
