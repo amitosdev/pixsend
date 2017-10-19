@@ -18,7 +18,7 @@ npm install --save pixsend
 * require in your browserify app (ES6)
 
 ```js
-const Pixsend = require('pixend')
+const Pixsend = require('pixsend')
 ```
 
 * require in your browserify app (ES5)

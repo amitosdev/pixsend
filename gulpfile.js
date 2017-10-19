@@ -17,7 +17,7 @@ gulp.task('build', () => {
 		.pipe(gulp.dest('./dist'))
 })
 
-// Gulp task to watch for less changes
+// Gulp task to watch for main script changes
 gulp.task('watcher', () => {
 	gulp.watch(['index.js'], ['build'])
 })
