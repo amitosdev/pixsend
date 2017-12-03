@@ -17,7 +17,7 @@
 		function sendToRequestBin() {
 			var url = document.getElementById('request-bin-url').value
 			log('getting ready to send request to: ' + url)
-			var pixel = new Pixsend({ src: url, debug: true }, { product: 'something' })
+			var pixel = new Pixsend.Pixsend({ src: url, debug: true }, { product: 'something' })
 			log('Pixsend instance created with { product: \'something\' }')
 			pixel.add({ foo: 'bar' })
 			log('adding { foo: \'bar\' }')
