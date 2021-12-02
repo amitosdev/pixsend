@@ -3,13 +3,12 @@ const express = require('express')
 const path = require('path')
 const http = require('http')
 const app = express()
+const fs = require('fs')
 
 const PORT = 3003
 
 app.use(express.static(__dirname))
-app.use('/dist', express.static(path.join(__dirname, '../..', 'dist'), {
-	etag: false
-}))
+app.use('/dist', express.static(path.join(__dirname, '../..', 'dist')))
 
 app.set('port', PORT)
 

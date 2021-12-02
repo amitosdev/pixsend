@@ -1,5 +1,5 @@
 # Pixsend
-A dead simple, extendable wrapper for sending report pixels.
+A dead simple wrapper for sending report pixel in the browser
 
 ## Installation
 
@@ -13,24 +13,21 @@ npm install --save pixsend
 
 ```html
 <script type="text/javascript" src="js/pixsend-min.js"></script>
-<!-- window.Pixsend.Pixsend -->
-<!-- window.Pixsend.Transporter -->
 ```
 
 * require in your browserify app (ES6)
 
 ```js
-const { Pixsend } = require('pixsend')
+const Pixsend = require('pixsend')
 ```
 
 * require in your browserify app (ES5)
 
 ```js
-const { Pixsend } = require('pixend/dist/pixsend-min.js')
+const Pixsend = require('pixend/dist/pixsend-min.js')
 ```
 
 ## Implementation
-If you didn't pass transporter class to `send()` method, defult transporter (sending using browser img element) will be used. 
 
 1. Create a new Pixsend Instance:
 
@@ -68,31 +65,8 @@ let pixsend = new Pixsend({ src: 'https://www.google.com', debug: true })
 ```js
 let pixsend = new Pixsend({ src: 'https://www.google.com/?quesry=string' }, { foo: 'bar' })
 pixsend.add({ more:'data', andMore:'something' }).send()
-
 // https://www.google.com/?quesry=string&foo=bar&more=data&andMore=something
 ```
-
-## Transporters
-Somtimes you need to send a pixel using your own logic. `Pixsend.send()` can recive a Transporter class. To develop a transporter:
-
-```js
-const { Pixsend, Transporter } = require('pixsend')
-
-class MyTransporter extends Transporter {
-	constructor(url, log) {
-		super(url, log)
-	}
-
-	send() {
-		// do your magic here
-		this._log('magic has been done!')
-	}
-}
-
-let pixsend = new Pixsend({ src: 'https://www.google.com' }, { foo: 'bar' })
-pixsend.send(MyTransporter, callback)
-// callback is optional
-``` 
 
 ## Tests
 * To run Pixsend unit test run:
