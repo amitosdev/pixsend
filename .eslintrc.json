@@ -1,7 +1,7 @@
 {
   "env": {
     "node": true,
-    "mocha": true
+    "es2020": true
   },
   "plugins": [
     "prettierx",
@@ -12,17 +12,24 @@
     "plugin:prettierx/standardx",
     "plugin:promise/recommended"
   ],
-  "parserOptions": {
-    "ecmaVersion": 2020
-  },
-  "ignorePatterns": ["**/dist/*"],
   "rules": {
-    "no-console":"error",
+    "no-console": "error",
     "prettierx/options": [
-      1,
+      "error",
       {
         "printWidth": 92
       }
     ]
-  }
+  },
+  "ignorePatterns": ["**/dist/*"],
+  "overrides": [
+    {
+      "files": [
+        "**/test/*.test.js"
+      ],
+      "env": {
+        "mocha": true
+      }
+    }
+  ]
 }
