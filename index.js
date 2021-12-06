@@ -56,6 +56,7 @@ class Pixsend {
           arguments[i] = JSON.stringify(arguments[i], null, '\t')
         }
       }
+      // eslint-disable-next-line no-console
       console.log.apply(console, arguments)
     }
   }

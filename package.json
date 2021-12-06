@@ -3,7 +3,8 @@
   "version": "1.2.1",
   "private": false,
   "scripts": {
-    "test": "mocha ./test/app.test.js"
+    "test": "mocha ./test/app.test.js",
+    "lint": "eslint . --ext .js --no-error-on-unmatched-pattern"
   },
   "bugs": "https://github.com/amitosdev/pixsend/issues",
   "homepage": "https://github.com/amitosdev/pixsend",

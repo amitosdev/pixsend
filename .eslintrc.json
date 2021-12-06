@@ -1,1 +1,28 @@
-{"env":{"node":true},"plugins":["prettierx","promise"],"extends":["eslint:recommended","plugin:prettierx/standardx","plugin:promise/recommended"],"parserOptions":{"ecmaVersion":2020},"rules":{"prettierx/options":[1,{"printWidth":92}]}}
+{
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "plugins": [
+    "prettierx",
+    "promise"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettierx/standardx",
+    "plugin:promise/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "ignorePatterns": ["**/dist/*"],
+  "rules": {
+    "no-console":"error",
+    "prettierx/options": [
+      1,
+      {
+        "printWidth": 92
+      }
+    ]
+  }
+}
