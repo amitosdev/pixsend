@@ -1,5 +1,3 @@
-'use strict'
-
 const isURL = require('validator/lib/isURL')
 const parse = require('url-parse')
 const objectAssign = require('object-assign')
@@ -56,7 +54,6 @@ class Pixsend {
           arguments[i] = JSON.stringify(arguments[i], null, '\t')
         }
       }
-      // eslint-disable-next-line no-console
       console.log.apply(console, arguments)
     }
   }

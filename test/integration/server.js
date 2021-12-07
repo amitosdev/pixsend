@@ -8,17 +8,19 @@ const PORT = 3003
 app.use(express.static(__dirname))
 app.use('/dist', express.static(path.join(__dirname, '../..', 'dist')))
 
-app.set('port', PORT)
-
 app.get('/favicon.ico', (req, res) => {
   res.sendStatus(204)
 })
 
+app.get('/test', (req, res) => {
+  console.log('request recived:')
+  console.log(JSON.stringify(req.query, null, '\t'))
+  res.sendStatus(200)
+})
+
 let server = http.createServer(app)
-// eslint-disable-next-line no-console
 console.log('*** using HTTP server')
 
 server.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log('Server is listening on port ', PORT)
 })

@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Pixsend integration</title>
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-	</head>
-	<body>
-		<h3>This is a Pixsend test page!</h3>
-		Type <a href="https://requestb.in/">RequestBin</a> URL: <input id="request-bin-url" type="url" size="40">
-		<br><br>
-		<button onclick="sendToRequestBin()">Send { product: 'something', foo: 'bar' }</button>
-		<h4>Progress:</h4>
-		<div id="request-progress"></div>
-		<script type="text/javascript" src="/dist/pixsend-min.js"></script>
-		<script>
 
-		function sendToRequestBin() {
-			var url = document.getElementById('request-bin-url').value
-			log('getting ready to send request to: ' + url)
+<head>
+	<title>Pixsend integration</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+
+<body>
+	<h3>This is a Pixsend test page!</h3>
+	<br>
+	<button onclick="sendToLocalServer()">Send { product: 'something', foo: 'bar' }</button>
+	<h4>Progress:</h4>
+	<div id="request-progress"></div>
+	<script type="text/javascript" src="/dist/pixsend-min.js"></script>
+	<script>
+		function sendToLocalServer() {
+			const { location } = window.document
+			const url = `${location.href}test`
+			log(`getting ready to send request to "${url}"`)
 			var pixel = new Pixsend({ src: url, debug: true }, { product: 'something' })
 			log('Pixsend instance created with { product: \'something\' }')
 			pixel.add({ foo: 'bar' })
 			log('adding { foo: \'bar\' }')
 			pixel.send()
-			log('pixel sent. please check: <a href="' + url + '?inspect" target="_blank">Your Request Bin URL</a>')
+			log('pixel sent. please check your console')
 		}
 
 		function log(string) {
@@ -30,6 +31,7 @@
 			consoleDiv.innerHTML += '<br>' + string
 		}
 
-		</script>
-	</body>
+	</script>
+</body>
+
 </html>

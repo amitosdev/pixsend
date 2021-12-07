@@ -13,7 +13,6 @@
     "plugin:promise/recommended"
   ],
   "rules": {
-    "no-console": "error",
     "prettierx/options": [
       "error",
       {

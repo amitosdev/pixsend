@@ -1,15 +1,13 @@
-'use strict'
 const gulp = require('gulp')
 const browserify = require('browserify')
 const uglify = require('gulp-uglify')
 const source = require('vinyl-source-stream')
 const buffer = require('vinyl-buffer')
 const babelify = require('babelify')
-const nodemon = require('gulp-nodemon')
 
 gulp.task('build', () => {
   return browserify('./index.js', { debug: false, standalone: 'Pixsend' })
-    .transform(babelify, { presets: ['es2015', 'stage-2'] })
+    .transform(babelify, { presets: ['@babel/preset-env'] })
     .bundle()
     .pipe(source(`./pixsend-min.js`))
     .pipe(buffer())
@@ -19,19 +17,18 @@ gulp.task('build', () => {
 
 // Gulp task to watch for main script changes
 gulp.task('watcher', () => {
-  gulp.watch(['index.js'], ['build'])
-})
+  const watcher = gulp.watch(['index.js'], gulp.series('build'))
+  watcher.on('change', function (path) {
+    console.log(`File ${path} was changed`)
+  })
 
-gulp.task('default', ['build', 'watcher'])
+  watcher.on('add', function (path) {
+    console.log(`File ${path} was added`)
+  })
 
-// Gulp task to start nodemon with server
-gulp.task('server', () => {
-  let serverPath = './test/integration/server.js'
-  nodemon({
-    script: serverPath,
-    ext: 'js',
-    watch: [serverPath]
+  watcher.on('unlink', function (path) {
+    console.log(`File ${path} was removed`)
   })
 })
 
-gulp.task('default', ['build', 'watcher', 'server'])
+gulp.task('default', gulp.series('build', 'watcher'))
